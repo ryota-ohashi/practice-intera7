@@ -4,6 +4,7 @@ import p5 from "p5";
 const sketch = (p5) => {
 
   let img;
+  let time = 0;
 
   p5.setup = () => {
     p5.createCanvas(p5.windowWidth, p5.windowHeight);
@@ -12,9 +13,12 @@ const sketch = (p5) => {
   };
 
   p5.draw = () => {
+    time++;
+    if(time % 4 !== 0) return;
 
-    const img2 = draw_shift_glitch(img, 10);
-    p5.image(img2, 0, 0);
+    let effected_img = draw_shift_glitch(img, 10);
+    // effected_img = draw_color_glitch(effected_img, 5);
+    p5.image(effected_img, 0, 0);
 
   };
 
@@ -27,7 +31,6 @@ const sketch = (p5) => {
     p5.textAlign(p5.CENTER, p5.CENTER);
     p5.textStyle(p5.BOLDITALIC);
     p5.text("- INTERA -", p5.width*0.5, p5.height*0.5);
-    // p5.pop();
 
     let img = p5.get();
     p5.clear();
