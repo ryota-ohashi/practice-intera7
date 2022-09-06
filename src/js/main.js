@@ -3,43 +3,23 @@ import p5 from "p5";
 
 const sketch = (p5) => {
 
+  let img;
 
   p5.setup = () => {
     p5.createCanvas(p5.windowWidth, p5.windowHeight);
+    img = draw_image();
+    img = draw_color_glitch(img, 5);
   };
 
   p5.draw = () => {
-    let img = draw_image();
 
-    img = draw_noise(img);
-    img = draw_color_glitch(img, 5);
-    img = draw_shift_glitch(img, 10);
+    const img2 = draw_shift_glitch(img, 10);
+    p5.image(img2, 0, 0);
 
-    // p5.background(0);
-    p5.image(img, 0, 0);
-
-    // draw_scanline();
-    // draw_exclusion();
   };
 
   function draw_image(){
     p5.background(0);
-
-    // for(let i=0;i<50;i++){
-    //   let size = 150;
-    //   p5.push();
-    //   p5.strokeWeight(0);
-    //   p5.fill(p5.random(50, 230), p5.random(128));
-    //   p5.ellipse(p5.random(p5.width), p5.random(p5.height), p5.random(p5.size), p5.random(p5.size));
-    //   p5.pop();
-    // }
-
-    // p5.push();
-    // p5.strokeWeight(0);
-    // p5.fill(255,100);
-    // p5.rectMode(p5.CENTER);
-    // p5.rect(p5.width*0.5, p5.height*0.5, p5.width, p5.height/7);
-
     p5.strokeWeight(p5.width/100);
     p5.stroke(0);
     p5.fill(255);
@@ -53,30 +33,6 @@ const sketch = (p5) => {
     p5.clear();
 
     return img;
-  }
-
-  function draw_noise(img){
-    p5.background(0);
-    p5.image(img, 0, 0);
-
-    let noise_size = 5;
-
-    p5.push();
-    p5.strokeWeight(0);
-    for(let i=0;i<img.width;i+=noise_size){
-      for(let j=0;j<img.height;j+=noise_size){
-        if(p5.random()<0.4){
-          p5.fill(p5.random([0, 255]), 60*p5.noise(i, j));
-          p5.rect(i, j, noise_size);
-        }
-      }
-    }
-    p5.pop();
-
-    let img_noise = p5.get();
-    p5.clear();
-
-    return img_noise;
   }
 
   function draw_color_glitch(img, shift_size){
@@ -121,28 +77,6 @@ const sketch = (p5) => {
     return img_glitch;
   }
 
-  // function draw_scanline(){
-  //   p5.push();
-  //   p5.stroke(0, 50);
-  //   p5.strokeWeight(1);
-  //   for(let i=0;i<p5.height;i+=p5.height/200){
-  //     p5.line(0, i, p5.width, i);
-  //   }
-  //   p5.pop();
-  // }
-
-  // function draw_exclusion(){
-  //   let size = 50;
-
-  //   p5.push();
-  //   p5.blendMode(p5.EXCLUSION);
-  //   p5.strokeWeight(0);
-  //   for(let i=0;i<5;i++){
-  //     p5.fill(255);
-  //     p5.rect(p5.random(p5.width), 0, p5.random(p5.size), p5.height);
-  //   }
-  //   p5.pop();
-  // }
 };
 
 
