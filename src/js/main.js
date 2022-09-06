@@ -25,47 +25,20 @@ const sketch = (p5) => {
   function draw_image(){
     p5.background(0);
 
-    for(let i=0;i<50;i++){
-      let size = 150;
-      p5.push();
-      p5.strokeWeight(0);
-      p5.fill(p5.random(50, 230), p5.random(128));
-      p5.ellipse(p5.random(p5.width), p5.random(p5.height), p5.random(p5.size), p5.random(p5.size));
-      p5.pop();
-    }
-
-    // let moji = ["画像を","壊す","壊れる","乱す","乱れる","壊されていく","コワい","コワれる",
-    //             "コワレテイク","グリッチ","ミダレ","破壊","やめられない","とまらない"];
-    // for(let i=0;i<100;i++){
-    //   let txt = p5.random(moji);
-
-    //   if(p5.random()<0.8){
-    //     let txt0="";
-    //     for(let j=0;j<txt.length;j++){
-    //       txt0 += txt.slice(j,j+1) + '\n';
-    //     }
-    //     txt = txt0.slice(0,txt0.length-1);
-    //   }
-
+    // for(let i=0;i<50;i++){
+    //   let size = 150;
     //   p5.push();
-    //   p5.strokeWeight(p5.random(p5.width/80));
-    //   p5.stroke(0, p5.random(255));
-    //   p5.fill(p5.random(80,230), p5.random(80,200));
-    //   p5.textSize(p5.random(p5.height/16));
-    //   p5.textAlign(p5.CENTER, p5.CENTER);
-    //   p5.textStyle(p5.random([p5.NORMAL, p5.ITALIC, p5.BOLD, p5.BOLDITALIC]));
-    //   p5.translate(p5.random(p5.width), p5.random(p5.height));
-    //   p5.rotate(p5.random([0, p5.PI/2, p5.PI, p5.PI/2*3]));
-    //   p5.scale(p5.random([-1, 1]), p5.random([-1, 1]));
-    //   p5.text(txt, 0, 0);
+    //   p5.strokeWeight(0);
+    //   p5.fill(p5.random(50, 230), p5.random(128));
+    //   p5.ellipse(p5.random(p5.width), p5.random(p5.height), p5.random(p5.size), p5.random(p5.size));
     //   p5.pop();
     // }
 
-    p5.push();
-    p5.strokeWeight(0);
-    p5.fill(255,100);
-    p5.rectMode(p5.CENTER);
-    p5.rect(p5.width*0.5, p5.height*0.5, p5.width, p5.height/7);
+    // p5.push();
+    // p5.strokeWeight(0);
+    // p5.fill(255,100);
+    // p5.rectMode(p5.CENTER);
+    // p5.rect(p5.width*0.5, p5.height*0.5, p5.width, p5.height/7);
 
     p5.strokeWeight(p5.width/100);
     p5.stroke(0);
@@ -74,7 +47,7 @@ const sketch = (p5) => {
     p5.textAlign(p5.CENTER, p5.CENTER);
     p5.textStyle(p5.BOLDITALIC);
     p5.text("- INTERA -", p5.width*0.5, p5.height*0.5);
-    p5.pop();
+    // p5.pop();
 
     let img = p5.get();
     p5.clear();
@@ -148,28 +121,28 @@ const sketch = (p5) => {
     return img_glitch;
   }
 
-  function draw_scanline(){
-    p5.push();
-    p5.stroke(0, 50);
-    p5.strokeWeight(1);
-    for(let i=0;i<p5.height;i+=p5.height/200){
-      p5.line(0, i, p5.width, i);
-    }
-    p5.pop();
-  }
+  // function draw_scanline(){
+  //   p5.push();
+  //   p5.stroke(0, 50);
+  //   p5.strokeWeight(1);
+  //   for(let i=0;i<p5.height;i+=p5.height/200){
+  //     p5.line(0, i, p5.width, i);
+  //   }
+  //   p5.pop();
+  // }
 
-  function draw_exclusion(){
-    let size = 50;
+  // function draw_exclusion(){
+  //   let size = 50;
 
-    p5.push();
-    p5.blendMode(p5.EXCLUSION);
-    p5.strokeWeight(0);
-    for(let i=0;i<5;i++){
-      p5.fill(255);
-      p5.rect(p5.random(p5.width), 0, p5.random(p5.size), p5.height);
-    }
-    p5.pop();
-  }
+  //   p5.push();
+  //   p5.blendMode(p5.EXCLUSION);
+  //   p5.strokeWeight(0);
+  //   for(let i=0;i<5;i++){
+  //     p5.fill(255);
+  //     p5.rect(p5.random(p5.width), 0, p5.random(p5.size), p5.height);
+  //   }
+  //   p5.pop();
+  // }
 };
 
 
