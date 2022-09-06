@@ -32,6 +32,7 @@ const sketch = (p5) => {
     p5.textStyle(p5.BOLDITALIC);
     p5.text("- INTERA -", p5.width*0.5, p5.height*0.5);
 
+    // 画像として切り出し
     let img = p5.get();
     p5.clear();
 
@@ -45,13 +46,19 @@ const sketch = (p5) => {
     let right_color = p5.color(0, 255, 255);
 
     p5.push();
+    // ---変更---
+
+    // ブランドADDはA,Bの合計
     p5.blendMode(p5.ADD);
 
+    // 塗りつぶし
     p5.tint(left_color);
+    // 少しずらしてセット
     p5.image(img, -shift_size, 0);
 
     p5.tint(right_color);
     p5.image(img, shift_size, 0);
+    // ---変更完了---
     p5.pop();
 
     let img_glitch = p5.get();
@@ -73,6 +80,17 @@ const sketch = (p5) => {
       let iy = y + p5.random(-1, 1)*shift_size;
       p5.image(img, ix, iy, sx, sy, x, y, sx, sy);
     }
+
+    // memo
+    // image(img, dx, dy, dw, dh, sx, sy, [sw], [sh])
+    // dx > Number：コピー元画像を描画するコピー先長方形のx座標
+    // dy > Number：コピー元画像を描画するコピー先長方形のy座標
+    // dw > Number：コピー先長方形の幅
+    // dh > Number：コピー先長方形の高さ
+    // sx > Number：コピー先長方形に描画するコピー先画像のサブセクションのx座標
+    // sy > Number：コピー先長方形に描画するコピー先画像のサブセクションのy座標
+    // sw > Number：コピー先長方形に描画するコピー先画像のサブセクションの幅(オプション)
+    // sh > Number：コピー先長方形に描画するコピー先画像のサブセクションの高さ(オプション)
 
     let img_glitch = p5.get();
     p5.clear();
